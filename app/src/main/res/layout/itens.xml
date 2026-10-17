@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:gravity="center_vertical"
+    android:background="?android:attr/selectableItemBackground">
+
+    <!-- Numeração Automática (Ex: 1., 2.) -->
+    <TextView
+        android:id="@+id/txtNumero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/aqe"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:layout_marginEnd="4dp"/>
+
+    <!-- Bloco Central: Agrupa os horários de Início e Fim -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Bloco de Início -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/inicio"
+            android:textColor="#777777"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spHoraIni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="42dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fvvv"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spMinIni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="42dp" />
+
+        <!-- Indicador de transição -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="2dp"
+            android:text="@string/tfim"
+            android:textColor="#555555"
+            android:textSize="12sp" />
+
+
+
+        <Spinner
+            android:id="@+id/spHoraFim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="42dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vvvv"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spMinFim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="42dp" />
+
+        <!-- NOVO: Exibe o cálculo individual da linha (Ex: +01h 15m) -->
+        <TextView
+            android:id="@+id/txtDuracaoItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="12sp"
+            android:textColor="#2E7D32"
+            android:textStyle="bold"
+            android:layout_marginStart="4dp"/>
+
+    </LinearLayout>
+
+    <!-- NOVO: Botão para capturar hora atual do INÍCIO -->
+    <Button
+        android:id="@+id/btnHoraIni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/inicio_atual"
+        android:textSize="10sp"
+        android:layout_marginEnd="4dp"
+        style="?android:attr/buttonStyleSmall"/>
+
+    <!-- BOTÃO: Captura hora atual do FIM -->
+    <Button
+        android:id="@+id/btnHoraFim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fim_atual"
+        android:textSize="10sp"
+        android:layout_marginEnd="4dp"
+        style="?android:attr/buttonStyleSmall"/>
+
+    <!-- Botão Editar / Salvar (✏️ ou 💾) -->
+    <Button
+        android:id="@+id/btnHabilitarEdicao"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="@string/editarpp"
+        android:textSize="12sp" />
+
+</LinearLayout>

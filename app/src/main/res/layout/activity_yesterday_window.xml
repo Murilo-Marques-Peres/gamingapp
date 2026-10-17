@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/yesterdayWind"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".YesterdayWindow">
+
+    <!-- Container do Topo (Título e Contador de Horas de Ontem) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/dados_de_ontem"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- NOVO: Contador que exibe o total de horas jogadas no dia anterior -->
+        <TextView
+            android:id="@+id/txtTotalHorasOntem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/total_jogado_ontem_00h_00m"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:layout_marginTop="4dp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+    <!-- RecyclerView Ajustado para o ID do Java (recyclerViewOntem) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListagemYesterday"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- NOVO: Botão Voltar integrado com o finish() do Java -->
+
+
+</LinearLayout>

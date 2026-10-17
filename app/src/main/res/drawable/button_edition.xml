@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Gradient Border -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:startColor="#7ba5e8"
+                android:endColor="#00122e"
+                />
+            <corners android:radius="16dp" /> <!-- Rounded corners -->
+        </shape>
+    </item>
+
+    <!-- Inner Gradient Background -->
+    <item
+        android:left="2dp"
+        android:right="2dp"
+        android:top="2dp"
+        android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:startColor="#154fad"
+                android:endColor="#02193d" />
+            <corners android:radius="14dp" /> <!-- Adjust inner radius slightly smaller -->
+        </shape>
+    </item>
+
+</layer-list>
