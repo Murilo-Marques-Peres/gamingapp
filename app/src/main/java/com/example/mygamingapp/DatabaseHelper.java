@@ -79,6 +79,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    // NOVO: exclui somente o registro de hoje com o ID informado.
+    public boolean excluirItemHoje(long id) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        int linhasExcluidas = db.delete(
+                "tabela_hoje",
+                "id = ?",
+                new String[]{String.valueOf(id)}
+        );
+
+        return linhasExcluidas > 0;
+    }
+
     public List<ItemModel> buscarItensHoje() {
         List<ItemModel> lista = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
