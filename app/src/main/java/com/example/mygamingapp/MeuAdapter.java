@@ -13,11 +13,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+import java.util.Locale;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class MeuAdapter extends RecyclerView.Adapter<MeuAdapter.ViewHolder> {
@@ -227,64 +229,60 @@ public class MeuAdapter extends RecyclerView.Adapter<MeuAdapter.ViewHolder> {
 
             // Registrar o horário de início atual.
             holder.btnHoraIni.setOnClickListener(v -> {
-                int posicao = holder.getBindingAdapterPosition();
+                Calendar calendario = Calendar.getInstance();
 
-                if (posicao == RecyclerView.NO_POSITION) {
-                    return;
-                }
-
-                ItemModel itemAtual = listaItens.get(posicao);
-                Calendar agora = Calendar.getInstance();
-
-                String hora = String.format(
-                        "%02d", agora.get(Calendar.HOUR_OF_DAY));
-                String minuto = String.format(
-                        "%02d", agora.get(Calendar.MINUTE));
-
-                db.atualizarHorarioNoBancoHoje(
-                        itemAtual.getId(),
-                        hora,
-                        minuto,
-                        itemAtual.getHoraFim(),
-                        itemAtual.getMinutoFim()
+                String horaAtual = String.format(
+                        Locale.getDefault(),
+                        "%02d",
+                        calendario.get(Calendar.HOUR_OF_DAY)
                 );
 
-                recarregarDados();
+                String minutoAtual = String.format(
+                        Locale.getDefault(),
+                        "%02d",
+                        calendario.get(Calendar.MINUTE)
+                );
+
+                holder.spHoraIni.setSelection(
+                        Integer.parseInt(horaAtual)
+                );
+
+                holder.spMinIni.setSelection(
+                        Integer.parseInt(minutoAtual)
+                );
             });
 
             // Registrar o horário de fim atual.
             holder.btnHoraFim.setOnClickListener(v -> {
-                int posicao = holder.getBindingAdapterPosition();
+                Calendar calendario = Calendar.getInstance();
 
-                if (posicao == RecyclerView.NO_POSITION) {
-                    return;
-                }
-
-                ItemModel itemAtual = listaItens.get(posicao);
-                Calendar agora = Calendar.getInstance();
-
-                String hora = String.format(
-                        "%02d", agora.get(Calendar.HOUR_OF_DAY));
-                String minuto = String.format(
-                        "%02d", agora.get(Calendar.MINUTE));
-
-                db.atualizarHorarioNoBancoHoje(
-                        itemAtual.getId(),
-                        itemAtual.getHoraInicio(),
-                        itemAtual.getMinutoInicio(),
-                        hora,
-                        minuto
+                String horaAtual = String.format(
+                        Locale.getDefault(),
+                        "%02d",
+                        calendario.get(Calendar.HOUR_OF_DAY)
                 );
 
-                recarregarDados();
+                String minutoAtual = String.format(
+                        Locale.getDefault(),
+                        "%02d",
+                        calendario.get(Calendar.MINUTE)
+                );
+
+                holder.spHoraFim.setSelection(
+                        Integer.parseInt(horaAtual)
+                );
+
+                holder.spMinFim.setSelection(
+                        Integer.parseInt(minutoAtual)
+                );
             });
 
         } else {
             // A lista de ontem é apenas para consulta.
-            holder.spHoraIni.setVisibility(View.GONE);
-            holder.spMinIni.setVisibility(View.GONE);
-            holder.spHoraFim.setVisibility(View.GONE);
-            holder.spMinFim.setVisibility(View.GONE);
+            holder.spHoraIni.setEnabled(false);
+            holder.spMinIni.setEnabled(false);
+            holder.spHoraFim.setEnabled(false);
+            holder.spMinFim.setEnabled(false);
 
             holder.btnHabilitarEdicao.setVisibility(View.GONE);
             holder.btnHoraIni.setVisibility(View.GONE);
