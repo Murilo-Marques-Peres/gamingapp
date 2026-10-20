@@ -37,6 +37,8 @@ public class YesterdayWindow extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
 
+        db.verificarEResetarViradaDeDia();
+
         // Busca os dados consolidados e fechados da tabela_ontem
         listaItens = db.buscarItensOntem();
 
